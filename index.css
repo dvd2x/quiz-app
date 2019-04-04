@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+body {
+  background: url("math-background_kids.png") no-repeat center center fixed;
+  background-color: #b0b0b0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.logo {
+  float: left;
+  height: 71px;
+  width: 300px;
+}
+
+.scoreBox {
+  float: right;
+  font-family: Impact, Charcoal, sans-serif;
+  font-size: 40px;
+  color: aliceblue;
+  padding-right: 5%;
+}
+
+.quiz-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.quiz-container h1 {
+  font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
+  text-align: center;
+}
+
+.question-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.question-list li {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.questions {
+  display: block;
+  font-style: italic;
+  font-size: 30px;
+  margin-bottom: 15px;
+  font-family: cursive;
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+}
+
+.start-quiz {
+  border: none;
+  background-color: #38a9af;
+  color: #ffffff;
+  font-size: 45px;
+  text-transform: uppercase;
+  display: block;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Open Sans Extra Bold, sans-serif;
+}
+
+.next-question {
+  border: none;
+  background-color: #38a9af;
+  color: #ffffff;
+  font-size: 45px;
+  text-transform: uppercase;
+  display: block;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Open Sans Extra Bold, sans-serif;
+}
