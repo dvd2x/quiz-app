@@ -80,10 +80,6 @@ body {
   text-align: center;
 }
 
-.quiz {
-  padding-top: 1%;
-}
-
 /* Header */
 .logo {
   float: left;
@@ -114,7 +110,6 @@ h1 {
   font-weight: 300;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 10px;
 }
 
 p {
@@ -131,7 +126,7 @@ p {
   font-weight: 300;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 15%;
+  padding-top: 12%;
   text-transform: uppercase;
 }
 
@@ -229,12 +224,10 @@ li {
 @media only screen and (min-width: 650px) {
   .start {
     width: 650px;
-    padding-top: 8%;
     text-align: center;
   }
 
   .quizStart {
-    padding-top: 5%;
     text-align: center;
   }
 }
@@ -242,7 +235,7 @@ li {
 @media only screen and (min-width: 360px) {
   .start,
   h1 {
-    padding-top: 8%;
+    padding-top: 4%;
     font-size: 25px;
     text-align: center;
     margin-left: auto;
@@ -251,7 +244,7 @@ li {
 
   .quizStart,
   h2 {
-    padding-top: 10%;
+    padding-top: 8%;
     font-size: 23px;
     text-align: center;
   }
