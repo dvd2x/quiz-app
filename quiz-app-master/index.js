@@ -50,7 +50,7 @@ const questions = [
   {
     title:
       "If you want to go to Gurnee Mills and it's 1 hour from your house but you have to wait an extra hour how many hours did t take you to get to Gurnee Mills?",
-    answers: ["2 hours", "3 hours", "1.5 hours", "1 hour"],
+    answers: ["2 hours", "3 hours", "1,5 hours", "1 hour"],
     correct: 0
   }
 ];
@@ -59,87 +59,40 @@ let guess;
 let score = 0;
 let currentQuestion = 0;
 
-const correctFeedback = `
-  <section class="feedback-page" role="main">
-    <h2>CORRECT!</h2>
-    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="the office funny dance">
-    <h3>WE MUST CELEBRATE HOLD ON</h3>
-  </section>
-`;
-
-const wrongFeedback = `
-<section class="feedback-page" role="main">
-  <h2>WRONG!!!</h2>
-  <img src="https://media.giphy.com/media/c9IDsR5ooqvW8/giphy.gif" alt="me my self and Irean funny fight">
-  <h3>WE CAN FIGHT OUR WAY OUT OF THIS</h3>
-</section>
-`;
-
-const youDidNotAnswerQuestion = `
-<section class="feedback-page" role="main">
-  <h2>Answer The Question Please!</h2>
-  <img src="https://media.giphy.com/media/3oEjI1VtfLh9WYsHwQ/giphy.gif" alt="answer the question gif">
-  <button id="next-button">Next</button>
-</section>
-`;
-
-const summery = `<div class="right-side">
-<div class="summary">
-  <p>Congrats you scored x out of y correct!</p>
-  <button id="restartQuiz">Restart Quiz</button>
-</div>
-</div>`;
-
-const start = `<div class="start">
-<h1>Do you think you can Pass a 8th grade Math Quiz</h1>
-<button id="startQuiz">Start Quiz</button>
-</div>`;
-
-const quiz = `<div class="quizStart" style="display:block;">
-<form class="quiz">
-  <fieldset>
-    <legend></legend>
-    <ul></ul>
-  </fieldset>
-  <button type="submit" id="submitAnswer">Submit Answer</button>
-</form>
-</div>`;
-
 //math quiz starts once #startQuiz button is hit, this hides the welcome page along with button and shows the quiz.
 $(function() {
-  $("main").on("click", ".start #startQuiz", function(e) {
+  $(".start #startQuiz").on("click", function(e) {
     e.preventDefault();
+    $(".start").hide();
     $("footer").show();
     $(".question-circle").show();
     $(".score-circle").show();
-    $("main").html(quiz);
+    $(".quiz").show();
     showQuestion(); //<- shows question
     questionStatus();
     scoreStatus();
   });
 
-  //// NEXT BUTTON ////////////////////
-  $("main").on("click", "#next-button", function(e) {
-    // ('.feedback-page').prev()
-    if (currentQuestion >= questions.length) {
-      showSummary();
-      console.log("summery");
-    } else {
-      showQuestion();
-      console.log("question");
-    }
+  //this eventListner will allow you to addClass selected for your answers and will preform an event deligation
+  $(".quiz ul").on("click", "li", function() {
+    $(".selected").removeClass("selected");
+    $(this).addClass("selected");
   });
 
   //this eventListner will allow you to submit your answer, but if you submit answer before you choose an answer an alert will be shown to user.
-  $("main").on("submit", "form", function(e) {
+  $(".quiz #submitAnswer").click(function(e) {
     e.preventDefault();
-    let guess = parseInt($('input[type="radio"]:checked').val());
-    //console.log($("main"));
-    checkAnswer(guess);
+    if ($("li.selected").length) {
+      let guess = parseInt($("li.selected").attr("id"));
+      checkAnswer(guess);
+    } else {
+      alert("Please select an answer");
+    }
   });
 
   //after you finnish your quiz this eventListner restartQuiz will restart the entire quiz brining you back to the welcome screen
-  $("main").on("click", ".summary #restartQuiz", function(e) {
+  $(".summary #restartQuiz").click(function(e) {
+    e.preventDefault();
     restartQuiz();
   });
 });
@@ -147,15 +100,10 @@ $(function() {
 //this function shows questions by taking the class quiz questions and answers and injecting them into ul/li
 function showQuestion() {
   let question = questions[currentQuestion];
-  // alert("Working");
-  $("main").html(quiz);
-  $(".quiz legend").text(question.title);
+  $(".quiz h2").text(question.title);
+  $(".quiz ul").html("");
   for (let i = 0; i < question.answers.length; i++) {
-    $(".quiz ul").append(
-      `<li id="${i}"><label for="${i}"><input type="radio" value="${i}" name="answer" required>${
-        question.answers[i]
-      }</label></li>`
-    );
+    $(".quiz ul").append(`<li id="${i}">${question.answers[i]}</li>`);
   }
 }
 
@@ -163,38 +111,35 @@ function showQuestion() {
 function checkAnswer(guess) {
   let question = questions[currentQuestion];
   if (question.correct === guess) {
-    $("main").html(correctFeedback);
+    alert("CORRECT!!! 👍😁😁😁👍");
     score++;
   } else {
-    $("main").html(wrongFeedback);
+    alert(`WRONG!!!👎😠😠😠👎 ${question.answers[question.correct]}`);
   }
   currentQuestion++; //<- this currentQuestion increments to your next question
   if (currentQuestion >= questions.length) {
     showSummary();
   } else {
-    setTimeout(function() {
-      questionStatus();
-      scoreStatus();
-      showQuestion();
-    }, 2000);
+    questionStatus();
+    scoreStatus();
+    showQuestion();
   }
 }
 
 //this function shows your score while taking the quiz
 function showSummary() {
+  $(".quiz").hide();
   clearStatus();
-  $("main").html(summery);
+  $(".summary").show();
   $(".summary p").text(
     `Congrats you scored ${score} out of ${questions.length} correct!`
   );
 }
 
-function showStart() {
-  $("main").html(start);
-}
 //restarts quiz when finnished
 function restartQuiz() {
-  $("main").html(start);
+  $(".summary").hide();
+  $(".start").show();
   score = 0;
   currentQuestion = 0;
   showQuestion();
@@ -218,5 +163,3 @@ function clearStatus() {
   $(".question-circle").empty();
   $(".score-circle").empty();
 }
-
-$(showStart);

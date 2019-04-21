@@ -2,11 +2,6 @@
   box-sizing: border-box;
 }
 
-.quiz,
-.summary {
-  display: none;
-}
-
 .quiz ul {
   list-style: none;
   padding: 0;
@@ -15,7 +10,7 @@
 .quiz li {
   cursor: pointer;
   padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-bottom: 5px; */
 }
 
 .container {
@@ -50,33 +45,11 @@ footer {
 }
 
 /* Body */
-.selected {
-  color: white;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.75);
-  background-image: radial-gradient(
-    circle,
-    #179445,
-    #1ba548,
-    #22b74a,
-    #2cc94b,
-    #37db4b
-  );
-  text-align: center;
-  border: 2px solid black;
-  padding-left: 25px;
-  padding-right: 25px;
-  display: inline;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 html,
 body {
-  background: url("math-background_kids.png") no-repeat fixed;
+  background: url("thumb-1920-96952.jpg") no-repeat fixed;
   background-size: 100%;
-  background-color: #b0b0b0;
-  background-size: 100% 100%;
-  font-weight: 300;
+  background-color: black;
   text-align: center;
 }
 
@@ -87,12 +60,10 @@ body {
   width: 300px;
 }
 
-.summary {
-  float: right;
+.summary p {
   font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-  font-size: 15px;
+  font-size: 40px;
   color: whitesmoke;
-  padding-right: 5%;
 }
 
 .left-side {
@@ -100,13 +71,18 @@ body {
 }
 
 .right-side {
-  float: right;
+  color: white;
+  font-size: 25px;
+  font-weight: 300;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 8%;
 }
 
 /* Font */
 h1 {
   font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-  color: black;
+  color: white;
   font-weight: 300;
   margin-left: auto;
   margin-right: auto;
@@ -114,32 +90,33 @@ h1 {
 
 p {
   font-family: Lucida Sans Unicode, Lucida Grande, sans-serif;
-  color: black;
+  color: white;
   font-size: 25px;
   font-weight: 300;
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 10px;
 }
 
 .start h1 {
-  font-weight: 300;
+  font-size: 43px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 12%;
   text-transform: uppercase;
 }
 
-.quizStart h2 {
-  display: block;
-  text-align: center;
-  font-weight: 300;
+.quizStart {
+  width: 50%;
   margin-left: auto;
   margin-right: auto;
 }
 
-li {
-  font-size: 24px;
+.quizStart legend {
+  color: white;
+  font-size: 38px;
+}
+
+.quizStart li {
+  font-size: 30px;
 }
 
 /* Buttons */
@@ -161,13 +138,12 @@ li {
 }
 
 #restartQuiz {
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
   background-color: green;
   color: white;
-  display: block;
-  height: 130px;
-  width: 130px;
+  height: 260px;
+  width: 260px;
   border-radius: 50%;
   text-transform: uppercase;
   display: block;
@@ -180,13 +156,13 @@ li {
 
 #startQuiz {
   border: none;
-  background-color: #38a9af;
+  background-color: green;
   color: #ffffff;
   font-size: 25px;
   text-transform: uppercase;
   display: block;
   height: 80px;
-  width: 175px;
+  width: 350px;
   border-radius: 3%;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -195,6 +171,22 @@ li {
 }
 
 #submitAnswer {
+  border: none;
+  background-color: green;
+  color: #ffffff;
+  font-size: 25px;
+  text-transform: uppercase;
+  display: block;
+  height: 80px;
+  width: 350px;
+  border-radius: 3%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#next-button {
   border: none;
   background-color: #38a9af;
   color: #ffffff;
@@ -210,49 +202,127 @@ li {
   margin-right: auto;
 }
 
+.feedback-page {
+  padding-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedback-page h2 {
+  color: white;
+  text-align: center;
+}
+
+.feedback-page h3 {
+  color: white;
+  text-align: center;
+}
+
+form {
+  text-align: left;
+  padding-top: 20%;
+}
+
+label {
+  display: block;
+  position: relative;
+  margin-bottom: 2px;
+  padding: 15px 30px 15px 62px;
+  border: 3px solid #fff;
+  border-radius: 100px;
+  color: #fff;
+  background-color: #585858;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+label:hover,
+label:focus {
+  background-color: gray;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  border: 2px solid #ffffff;
+  transition: 0.2s all linear;
+  outline: none;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+input:checked {
+  border: 8px solid yellowgreen;
+}
+input[type="radio"] {
+  flex: 0 0 auto;
+  margin-right: 30px;
+}
+
+input {
+  margin-top: 5px;
+}
+
+fieldset {
+  border: 0;
+}
+
 /* Media Query */
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .logo {
+    padding-bottom: 6%;
+  }
+
+  fieldset,
+  .quizStart {
+    width: 95%;
+    margin-bottom: 100px;
+  }
+
+  fieldset {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0;
+  }
+
+  legend {
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+  }
+
   main,
   h1 {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-  }
-}
-
-@media only screen and (min-width: 650px) {
-  .start {
-    width: 650px;
-    text-align: center;
-  }
-
-  .quizStart {
-    text-align: center;
-  }
-}
-
-@media only screen and (min-width: 360px) {
-  .start,
-  h1 {
-    padding-top: 4%;
-    font-size: 25px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .quizStart,
-  h2 {
+    font-size: 32px;
     padding-top: 8%;
-    font-size: 23px;
-    text-align: center;
   }
 
-  .question-status,
-  p {
-    font-size: 18px;
-    margin-left: auto;
-    margin-right: auto;
+  #startQuiz {
+    width: 200px;
   }
+
+  label {
+    font-size: 28px;
+    padding: 15px;
+    margin-bottom: -7px;
+  }
+
+  #submitAnswer {
+    width: 200px;
+  }
+
+  #submitAnswer {
+    margin-bottom: -15%;
+    margin-top: -20%;
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1190px) {
 }
