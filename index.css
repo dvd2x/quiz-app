@@ -47,7 +47,7 @@ footer {
 /* Body */
 html,
 body {
-  background: url("thumb-1920-96952.jpg") no-repeat fixed;
+  background: url("thumb-1920-96952.jpg") repeat-y fixed;
   background-size: 100%;
   background-color: black;
   text-align: center;
