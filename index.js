@@ -98,8 +98,8 @@ const start = `<div class="start">
 const quiz = `<div class="quizStart" style="display:block;">
 <form class="quiz">
   <fieldset>
-    <legend></legend>
-    <ul></ul>
+    <legend style="font-size: 30px;"></legend>
+    <ul style="text-align:left"></ul>
   </fieldset>
   <button type="submit" id="submitAnswer">Submit Answer</button>
 </form>
@@ -128,6 +128,13 @@ $(function() {
       showQuestion();
       console.log("question");
     }
+  });
+
+  // allows the entire answer button to be clicked
+  $("main").on("click", "form li", function(e) {
+    $(this)
+      .find("input")
+      .prop("checked", true);
   });
 
   //this eventListner will allow you to submit your answer, but if you submit answer before you choose an answer an alert will be shown to user.
